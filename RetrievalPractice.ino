@@ -51,58 +51,42 @@ void task1()
         uint8_t btn2State = digitalRead(button2Pin);
         uint32_t currentTime = millis();
 
-        if (  (btn1State !=btn1OldState)  || (btn2State !=btn2OldState) )
+        if ((btn1State != btn1OldState) || (btn2State != btn2OldState))
         {
             btn1OldState = btn1State;
             btn2OldState = btn2State;
-             
 
+            digitalWrite(ledGreen, LOW);
+            digitalWrite(ledBlue, LOW);
+            digitalWrite(ledYellow, LOW);
+            digitalWrite(ledRed, LOW);
             // Evento 1
             if (btn1State == LOW && btn2State == LOW)
             {
                 digitalWrite(ledRed, HIGH);
-                digitalWrite(ledGreen, LOW);
-                digitalWrite(ledBlue, LOW);
-                digitalWrite(ledYellow, LOW);
-                printf("Led ROJO encendido");
+                printf("Led ROJO encendido\n");
             }
 
             // Evento 2
             if (btn1State == LOW && btn2State == HIGH)
-            {                
+            {
                 digitalWrite(ledGreen, HIGH);
-                digitalWrite(ledRed, LOW);
-                digitalWrite(ledBlue, LOW);
-                digitalWrite(ledYellow, LOW);
-                printf("Led VERDE encendido");
-
-
+                printf("Led VERDE encendido\n");
             }
 
             // Evento 3
             if (btn1State == HIGH && btn2State == LOW)
             {
                 digitalWrite(ledBlue, HIGH);
-                digitalWrite(ledGreen, LOW);
-                digitalWrite(ledRed, LOW);
-                digitalWrite(ledYellow, LOW);
-                printf("Led AZUL encendido");
-
+                printf("Led AZUL encendido\n");
             }
 
             // Evento 4
             if (btn1State == HIGH && btn2State == HIGH)
             {
                 digitalWrite(ledYellow, HIGH);
-                digitalWrite(ledBlue, HIGH);
-                digitalWrite(ledRed, LOW);
-                digitalWrite(ledGreen, LOW);
-                printf("Led AMARILLO encendido");
-                
-
+                printf("Led AMARILLO encendido\n");
             }
-
-
         }
 
         break;
